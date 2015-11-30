@@ -1,14 +1,15 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>ログイン</title>
+    <title>Countryデータ登録画面(完了)</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -19,7 +20,7 @@
     <style>
     <!--
     body {
-        padding-top: 70px;
+        padding-top: 50px;
     }
     .navbar-brand {
         font-size: 24px;
@@ -32,27 +33,27 @@
 </head>
 
 <body>
+    <div id="header" th:include="common/header :: header (active='countryInput')"></div>
+
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-push-3 col-md-6">
-                <div class="form-wrap">
-                    <div class="text-center"><h1>WebApp - Basic</h1></div>
-                    <br/>
-                    <form role="form" action="#" method="post" id="login-form" autocomplete="off">
-                        <div class="form-group">
-                            <label for="id" class="sr-only">ID</label>
-                            <input type="text" name="id" id="id" class="form-control" placeholder="ID を入力して下さい"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="sr-only">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Password を入力して下さい"/>
-                        </div>
-                        <br/>
-                        <button id="btn-login" class="btn btn-primary btn-block">ログイン</button>
-                    </form>
-                </div>
+            <div class="col-sm-push-2 col-sm-10"><h1>Countryデータ登録</h1></div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">　</div>
+            <div class="col-xs-12">
+                <div class="col-sm-2">　</div>
+                <div class="col-sm-10" style="font-size: 120%;">登録が完了しました</div>
+            </div>
+
+            <div class="col-xs-12">　</div>
+            <div class="text-center">
+                <button id="js-input" type="button" value="input" class="btn btn-primary">次のデータを登録する</button>
+                <button id="js-toCountryList" type="button" value="toCountryList" class="btn btn-default">検索/一覧画面へ</button>
             </div>
         </div>
+
     </div>
 
     <!-- Bootstrap core JavaScript
@@ -64,7 +65,13 @@
     <script type="text/javascript">
     <!--
     $(document).ready(function() {
-        $('#id').focus();
+        $('#js-input').bind('click', function(){
+            location.href = '/country/input';
+        });
+
+        $('#js-toCountryList').bind('click', function(){
+            location.href = '/countryList';
+        });
     });
     -->
     </script>
