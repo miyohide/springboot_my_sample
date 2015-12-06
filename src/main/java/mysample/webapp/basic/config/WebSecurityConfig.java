@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -21,11 +22,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
+		        .antMatchers("/encode").permitAll()
 				.anyRequest().authenticated();
 		http.formLogin()
 				.loginPage("/")
 				.loginProcessingUrl("/login")
-				.defaultSuccessUrl("/countryList")
+				.defaultSuccessUrl("/countryList", true)
 				.failureUrl("/")
 				.usernameParameter("id")
 				.passwordParameter("password")
@@ -43,7 +45,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configAutoentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
         .usersByUsernameQuery("select id, password, enabled from user where id = ?")
-        .authoritiesByUsernameQuery("select id, role from user_role where id = ?");		
+        .authoritiesByUsernameQuery("select id, role from user_role where id = ?")
+        .passwordEncoder(new BCryptPasswordEncoder());
 	}
 
 }
