@@ -116,7 +116,7 @@
                     <div class="form-group" th:classappend="${#fields.hasErrors('*{code2}')} ? 'has-error' : ''">
                         <label for="code2" class="control-label col-sm-2">Code2</label>
                         <div class="col-sm-10">
-                            <div class="row"><div class="col-sm-1"><input type="text" name="code2" id="code2" class="form-control input-sm" value="" placeholder="JP" th:field="*{code2}"/></div></div>
+                            <div class="row"><div class="col-sm-2"><input type="text" name="code2" id="code2" class="form-control input-sm" value="" placeholder="JP" th:field="*{code2}"/></div></div>
                             <div class="row" th:if="${#fields.hasErrors('*{code2}')}"><div class="col-sm-10"><p class="form-control-static text-danger"><small th:errors="*{code2}"></small></p></div></div>
                         </div>
                     </div>
