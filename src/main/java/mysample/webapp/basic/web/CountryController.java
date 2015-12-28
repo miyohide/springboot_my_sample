@@ -29,7 +29,7 @@ public class CountryController {
 	// classに設定したRequestMappingの下に設定するURL
 	@RequestMapping("/input")
 	public String input(CountryForm countryForm, Model model) {
-		model.addAttribute("continentList", constant.getCONTINENT_LIST());
+		model.addAttribute("continentList", constant.CONTINENT_LIST);
 		return "country/input";
 	}
 	
@@ -44,7 +44,7 @@ public class CountryController {
 			 BindingResult bindingResult,
 			 Model model) {
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("continentList", constant.getCONTINENT_LIST());
+			model.addAttribute("continentList", constant.CONTINENT_LIST);
 			return "country/input";
 		}
 		return "country/confirm";
