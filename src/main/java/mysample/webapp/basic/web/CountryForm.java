@@ -2,7 +2,11 @@ package mysample.webapp.basic.web;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
+
+import java.math.BigDecimal;
+
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -24,13 +28,13 @@ public class CountryForm {
 	@Size(max = 26, message = "{error.size.max}")
 	private String region;
 	
-	@NotBlank
+	@NotNull
 	@Digits(integer=8, fraction=2, message = "{error.digits.integerandfraction}")
-	private String surfaceArea;
+	private BigDecimal surfaceArea;
 	
-	@NotBlank
+	@NotNull
 	@Digits(integer=11, fraction=0, message = "{error.digits.integeronly}")
-	private String population;
+	private BigDecimal population;
 	
 	@NotBlank
 	@Size(max = 45, message = "{error.size.max}")
