@@ -16,7 +16,7 @@ public class Constant {
 
 	@Autowired
 	public Constant(
-			@Value("#{'${CONTINENT_LIST}'.split(',')}") List<String> CONTINENT_LIST
+			@Value("#{'${continent.list}'.split(',')}") List<String> CONTINENT_LIST
 			) {
 		this.CONTINENT_LIST = CONTINENT_LIST;
 	}
