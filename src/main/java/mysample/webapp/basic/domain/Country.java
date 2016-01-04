@@ -13,16 +13,16 @@ import lombok.Data;
 public class Country {
 
     @Id
-    @Column(nullable = false)
+    @Column(nullable = false, length=3)
     private String code;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length=52)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length=20)
     private String continent;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length=26)
     private String region;
 
     @Column(nullable = false, precision = 8, scale = 2)
@@ -42,17 +42,17 @@ public class Country {
     @Column(precision = 8, scale = 2)
     private BigDecimal gNPOld;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length=45)
     private String localName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length=45)
     private String governmentForm;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length=60)
     private String headOfState;
 
     private Long capital;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length=2)
     private String code2;
 }
