@@ -1,6 +1,11 @@
 package mysample.webapp.basic.web;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mysample.webapp.basic.config.Constant;
+import mysample.webapp.basic.service.CountryService;
 
 @Controller
 @RequestMapping("/country")  // ベースとなるURL
@@ -20,7 +26,10 @@ public class CountryController {
 	
 	@Autowired
 	private CountryFormValidator countryFormValidator;
-	
+
+	@Autowired
+	private CountryService countryService;
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.addValidators(countryFormValidator);
@@ -51,7 +60,15 @@ public class CountryController {
 	}
 	
 	@RequestMapping("/update")
-	public String update() {
+	public String update(@Validated CountryForm countryForm,
+			BindingResult bindingResult,
+			Model model,
+			HttpServletResponse response) throws IOException {
+		if (bindingResult.hasErrors()) {
+			response.sendError(HttpStatus.BAD_REQUEST.value());
+			return null;
+		}
+		countryService.save(countryForm);
 		return "redirect:/country/complete";
 	}
 	
