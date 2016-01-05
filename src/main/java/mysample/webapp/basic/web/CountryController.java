@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mysample.webapp.basic.config.Constant;
+import mysample.webapp.basic.domain.Country;
+import mysample.webapp.basic.service.CountryRepository;
 import mysample.webapp.basic.service.CountryService;
 
 @Controller
@@ -30,7 +32,10 @@ public class CountryController {
 	@Autowired
 	private CountryService countryService;
 
-	@InitBinder
+    @Autowired
+    private CountryRepository countryRepository;
+
+    @InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.addValidators(countryFormValidator);
 	}
@@ -56,6 +61,14 @@ public class CountryController {
 			model.addAttribute("continentList", constant.CONTINENT_LIST);
 			return "country/input";
 		}
+
+        Country country = countryRepository.findOne(countryForm.getCode());
+        if (country != null) {
+        	bindingResult.reject("countryForm.global.duplicate");
+        	model.addAttribute("continentList", constant.CONTINENT_LIST);
+        	return "country/input";
+        }
+
 		return "country/confirm";
 	}
 	
