@@ -98,3 +98,6 @@ gradle-app.setting
 # DB
 dbs/*.db
 
+# logs
+logs/
+
