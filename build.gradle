@@ -13,8 +13,8 @@ apply plugin: 'spring-boot'
 apply plugin: 'eclipse'
 
 jar {
-    baseName = 'mysample-webapp-basic'
-    version =  '0.0.1-SNAPSHOT'
+    baseName = 'country-search'
+    version =  '0.0.1'
 }
 
 repositories {
