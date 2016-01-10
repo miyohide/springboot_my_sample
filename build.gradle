@@ -33,4 +33,6 @@ dependencies {
     compile("org.apache.commons:commons-lang3:3.3.2")
     compile("org.projectlombok:lombok:1.14.8")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.springframework.security:spring-security-test:4.0.3.RELEASE")
+    testCompile("org.dbunit:dbunit:2.5.1")
 }
