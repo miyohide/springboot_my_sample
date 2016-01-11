@@ -101,3 +101,4 @@ dbs/*.db
 # logs
 logs/
 
+/.nb-gradle/
