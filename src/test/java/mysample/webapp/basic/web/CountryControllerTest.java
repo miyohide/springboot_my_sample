@@ -22,46 +22,46 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 public class CountryControllerTest {
 
-	@Autowired
-	private WebApplicationContext context;
-	
-	private MockMvc mvc;
+    @Autowired
+    private WebApplicationContext context;
 
-	@Before
-	public void setUp() throws Exception {
-		this.mvc = MockMvcBuilders.webAppContextSetup(this.context).build();
-	}
+    private MockMvc mvc;
 
-	@Test
-	public void testInput() throws Exception {
-		this.mvc.perform(get("/country/input")).andExpect(status().isOk())
-		        .andExpect(content().contentType("text/html;charset=UTF-8"))
-		        .andExpect(view().name("country/input"))
-		        .andExpect(xpath("/html/head/title").string("Countryデータ登録画面(入力)"));
-	}
+    @Before
+    public void setUp() throws Exception {
+        this.mvc = MockMvcBuilders.webAppContextSetup(this.context).build();
+    }
 
-	@Ignore
-	@Test
-	public void testConfirm() throws Exception {
-		this.mvc.perform(get("/country/confirm")).andExpect(status().isOk())
-        .andExpect(content().contentType("text/html;charset=UTF-8"))
-        .andExpect(view().name("country/confirm"))
-        .andExpect(xpath("/html/head/title").string("Countryデータ登録画面(確認)"));
-	}
+    @Test
+    public void testInput() throws Exception {
+        this.mvc.perform(get("/country/input")).andExpect(status().isOk())
+                .andExpect(content().contentType("text/html;charset=UTF-8"))
+                .andExpect(view().name("country/input"))
+                .andExpect(xpath("/html/head/title").string("Countryデータ登録画面(入力)"));
+    }
 
-	@Ignore
-	@Test
-	public void testUpdate() throws Exception {
-		this.mvc.perform(get("/country/update")).andExpect(status().isFound())
-        .andExpect(redirectedUrl("country/complete"));
-	}
+    @Ignore
+    @Test
+    public void testConfirm() throws Exception {
+        this.mvc.perform(get("/country/confirm")).andExpect(status().isOk())
+                .andExpect(content().contentType("text/html;charset=UTF-8"))
+                .andExpect(view().name("country/confirm"))
+                .andExpect(xpath("/html/head/title").string("Countryデータ登録画面(確認)"));
+    }
 
-	@Test
-	public void testComplete() throws Exception {
-		this.mvc.perform(get("/country/complete")).andExpect(status().isOk())
-        .andExpect(content().contentType("text/html;charset=UTF-8"))
-        .andExpect(view().name("country/complete"))
-        .andExpect(xpath("/html/head/title").string("Countryデータ登録画面(完了)"));
-	}
+    @Ignore
+    @Test
+    public void testUpdate() throws Exception {
+        this.mvc.perform(get("/country/update")).andExpect(status().isFound())
+                .andExpect(redirectedUrl("country/complete"));
+    }
+
+    @Test
+    public void testComplete() throws Exception {
+        this.mvc.perform(get("/country/complete")).andExpect(status().isOk())
+                .andExpect(content().contentType("text/html;charset=UTF-8"))
+                .andExpect(view().name("country/complete"))
+                .andExpect(xpath("/html/head/title").string("Countryデータ登録画面(完了)"));
+    }
 
 }
