@@ -9,8 +9,12 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CountryForm {
 	@NotBlank
 	@Size(max = 3, message = "{error.size.max}")
