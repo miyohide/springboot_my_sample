@@ -113,7 +113,7 @@ public class CountryControllerTest {
     public void testInput() throws Exception {
         secmvc.nonauth.perform(get("/country/input"))
                 .andExpect(status().isFound())
-                .andExpect(redirectedUrl("http://localhost"));
+                .andExpect(redirectedUrl("http://localhost/"));
         
         secmvc.auth.perform(get("/country/input"))
                 .andExpect(status().isOk())
@@ -133,7 +133,6 @@ public class CountryControllerTest {
                 .andExpect(flashEx().attributes("countryForm", this.countryFormSuccess));
     }
 
-    @Ignore
     @Test
     public void testConfirm() throws Exception {
         // 非認証時は403エラー(Forbidden)が返ることを確認する
@@ -231,7 +230,6 @@ public class CountryControllerTest {
                 .andExpect(xpath("/html/head/title").string("Countryデータ登録画面(確認)"));
     }
 
-    @Ignore
     @Test
     public void testUpdate() throws Exception {
         // 非認証時は403エラー(Forbidden)が返ることを確認する
