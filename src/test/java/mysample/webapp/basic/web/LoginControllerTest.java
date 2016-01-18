@@ -53,7 +53,6 @@ public class LoginControllerTest {
                 .build();
     }
 
-    @Ignore("org.dbunit.dataset.DataSetException: error getting list of tablesが出てテストが失敗する")
     @Test
     public void testIndex() throws Exception {
         this.mvc.perform(get("/")).andExpect(status().isOk())
@@ -61,7 +60,6 @@ public class LoginControllerTest {
                 .andExpect(view().name("login"));
     }
 
-    @Ignore("org.dbunit.dataset.DataSetException: error getting list of tablesが出てテストが失敗する")
     @Test
     public void testLogin() throws Exception {
         // 存在しないユーザでログインを試みる
@@ -85,7 +83,6 @@ public class LoginControllerTest {
                 .andExpect(authenticated().withUsername("tanaka"));
     }
 
-    @Ignore("org.dbunit.dataset.DataSetException: error getting list of tablesが出てテストが失敗する")
     @Test
     public void testEncode() throws Exception {
         MvcResult result = this.mvc.perform(get("/encode?password=ptest")).andExpect(status().isOk())
