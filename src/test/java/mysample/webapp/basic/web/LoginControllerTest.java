@@ -17,9 +17,9 @@ import mysample.webapp.basic.test.TestDataResource;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.junit.Assert.assertThat;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
@@ -74,7 +74,7 @@ public class LoginControllerTest {
                 .andExpect(status().isFound())
                 .andExpect(redirectedUrl("/"))
                 .andExpect(unauthenticated())
-                .andExpect(request().sessionAttribute("SPRING_SECURITY_LAST_EXCEPTION", isA(BadCredentialsException.class)));
+                .andExpect(request().sessionAttribute("SPRING_SECURITY_LAST_EXCEPTION", isA(DisabledException.class)));
 
         // ログイン可能なユーザでログインを試みる
         this.mvc.perform(formLogin().user("id", "tanaka").password("password", "tarou"))
