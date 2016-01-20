@@ -38,7 +38,7 @@ public class CountryForm {
 	
 	@NotNull
 	@Digits(integer=11, fraction=0, message = "{error.digits.integeronly}")
-	private BigDecimal population;
+	private Long population;
 	
 	@NotBlank
 	@Size(max = 45, message = "{error.size.max}")

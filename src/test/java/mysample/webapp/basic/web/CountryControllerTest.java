@@ -55,7 +55,7 @@ public class CountryControllerTest {
             "Asia",
             "Eastern Asia",
             new BigDecimal("12345678.00"),
-            new BigDecimal("2147483647"),
+            2147483647L,
             StringUtils.repeat("x", 45),
             StringUtils.repeat("x", 45),
             StringUtils.repeat("x", 2)
@@ -79,7 +79,7 @@ public class CountryControllerTest {
             "test",
             StringUtils.repeat("x", 27),
             new BigDecimal("12345678.000"),
-            new BigDecimal("123456789012"),
+            123456789012L,
             StringUtils.repeat("x", 46),
             StringUtils.repeat("x", 46),
             StringUtils.repeat("x", 3)
@@ -91,7 +91,7 @@ public class CountryControllerTest {
             "Europe",
             "Eastern Asia",
             new BigDecimal("1"),
-            new BigDecimal("2"),
+            2L,
             "Nippon",
             "test",
             "JP"
@@ -103,7 +103,7 @@ public class CountryControllerTest {
             "Asia",
             "Southern Europe",
             new BigDecimal("1"),
-            new BigDecimal("2"),
+            2L,
             "Nippon",
             "test",
             "JP"
